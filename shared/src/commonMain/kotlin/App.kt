@@ -1,6 +1,9 @@
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -33,12 +36,70 @@ fun App() {
 
 expect fun getPlatformName(): String
 
-@OptIn(ExperimentalResourceApi::class)
+
 @Composable
 fun HomeScreen() {
-    var greetingText by remember { mutableStateOf(getPlatformName()) }
-    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
 
+
+    BoxWithConstraints {
+        if (maxWidth < 600.dp) {
+            PhonesUi()
+        }else{
+            DesktopUi()
+        }
+    }
+}
+
+@OptIn(ExperimentalResourceApi::class)
+@Composable
+fun DesktopUi() {
+    var platformName by remember { mutableStateOf(getPlatformName()) }
+
+    Row(Modifier.fillMaxWidth(),
+    verticalAlignment = Alignment.CenterVertically) {
+        Image(
+            painterResource("compose-multiplatform.xml"),
+            null,
+            modifier = Modifier
+        )
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxHeight(),
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = "CMM Playground",
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.Bold,
+                fontSize = 32.sp
+            )
+
+            Column(
+                modifier = Modifier.fillMaxHeight(.5f),
+                verticalArrangement = Arrangement.Center
+            ) {
+                Button(
+                    onClick = { platformName = " ${getPlatformName()}, UI" },
+                    colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF383688)),
+                    modifier = Modifier.fillMaxWidth()
+                        .padding(start = 16.dp, end = 16.dp),
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    Text(
+                        platformName, fontSize = 22.sp, color = Color.White,
+                        modifier = Modifier.padding(4.dp)
+                    )
+                }
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalResourceApi::class)
+@Composable
+fun PhonesUi() {
+    var platformName by remember { mutableStateOf(getPlatformName()) }
+    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Image(
             painterResource("compose-multiplatform.xml"),
             null
@@ -54,16 +115,18 @@ fun HomeScreen() {
         Column(
             modifier = Modifier.fillMaxSize(1f),
             verticalArrangement = Arrangement.Center
-        ){
+        ) {
             Button(
-                onClick = { greetingText = " ${getPlatformName()}, UI" },
+                onClick = { platformName = " ${getPlatformName()}, UI" },
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF383688)),
                 modifier = Modifier.fillMaxWidth()
                     .padding(start = 16.dp, end = 16.dp),
                 shape = RoundedCornerShape(8.dp)
             ) {
-                Text(greetingText, fontSize = 22.sp, color = Color.White,
-                    modifier = Modifier.padding(4.dp))
+                Text(
+                    platformName, fontSize = 22.sp, color = Color.White,
+                    modifier = Modifier.padding(4.dp)
+                )
             }
         }
     }

@@ -18,6 +18,8 @@ pluginManagement {
         id("com.android.library").version(agpVersion)
 
         id("org.jetbrains.compose").version(composeVersion)
+        id("com.android.application") version "7.4.2"
+        id("org.jetbrains.kotlin.android") version "1.8.20"
     }
 }
 
@@ -32,3 +34,5 @@ dependencyResolutionManagement {
 rootProject.name = "CmmPlayground"
 include(":androidApp")
 include(":shared")
+include(":desktopApp")
+
