@@ -4,8 +4,10 @@
 A [compose multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/) showcasing sharing of ui code between android and ios 
 
 
-<img src="./screenshots/android.png" width="240">&emsp;
-<img src="./screenshots/ios.png" width="340">
+## **Screenshots 📷**
+| | | |
+|:-------------------------:|:-------------------------:|:-------------------------:|
+| Android <img src="./screenshots/android.png" width="350">  | IOS <img src="./screenshots/ios.png" width="450"> | <img src="./screenshots/ios.png" width="300"> |
 
 ## Project structure
 
