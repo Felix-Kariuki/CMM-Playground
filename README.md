@@ -1,13 +1,17 @@
 # CMM-Playground
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-A [compose multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/) showcasing sharing of ui code between android and ios 
+A [compose multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/) project showcasing sharing of ui code between android, ios and desktop platforms. The screens are fully responsive to all screensizes across all platforms. You can use this template as your starter pack for your compose multiplatform project
 
 
 ## **Screenshots 📷**
 | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|
-| Android <img src="./screenshots/android.png" width="350">  | IOS <img src="./screenshots/ios.png" width="450"> | <img src="./screenshots/ios.png" width="300"> |
+| Android <img src="./screenshots/android.png" width="200"> | IOS <img src="./screenshots/ios.png" width="350"> | Desktop <img src="./screenshots/desktop.png" width="600"> |
+
+| | |
+|:-------------------------:|:-------------------------:|
+| Android <img src="./screenshots/android_rotate.png" width="600">  | IOS <img src="./screenshots/ios_rotate.png" width="600"> |
 
 ## Project structure
 
@@ -32,6 +36,11 @@ The `androidApp` module depends on and uses the `shared` module as a regular And
 
 This is an Xcode project that builds into an iOS application.
 It depends on and uses the `shared` module as a CocoaPods dependency.
+
+### 4.desktopApp
+
+This is a Kotlin module that builds into a desktop application. It uses Gradle as the build system. The `desktopApp`
+module depends on and uses the `shared` module as a regular library.
 
   ## License and Copyright ©️
   
